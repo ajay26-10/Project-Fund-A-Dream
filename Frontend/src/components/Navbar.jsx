@@ -10,7 +10,7 @@ const Navbar = () => {
         <nav className="m-2 pl-2">
             <input type="search" placeholder="Search" className="border-2 border-solid pl-2 rounded-md"/>
             <button className="border-2 rounded-md ml-1 p-1 hover:bg-green-300">Search</button>
-            <Link to={'/adminsignup'} className=" pl-[50rem]">Admin</Link>
+            <Link to={'/adminlogin'} className=" pl-[50rem]">Admin</Link>
             <Link to={'/signup'} className=" pl-[2rem]">Sign Up</Link>
         </nav>
     </header>

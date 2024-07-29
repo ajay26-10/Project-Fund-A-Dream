@@ -1,5 +1,4 @@
 import React from 'react'
-import img from '../assets/logo.png'
 import DisplayProjects from '../components/DisplayProjects'
 
 const Homepage = () => {
