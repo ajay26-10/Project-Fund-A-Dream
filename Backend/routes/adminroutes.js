@@ -38,8 +38,8 @@ router.get('/allusers',verifyAdmin, async (req, res) => {
 
     res.json({ projectsByUser });
   } catch (error) {
-    console.error('Error fetching projects by user:', error);
-    res.status(500).json({ error: 'Failed to fetch projects by user' });
+    console.error('Error fetching projects by User:', error);
+    res.status(500).json({ error: 'Failed to fetch projects by User' });
   }
 });
 
@@ -49,8 +49,8 @@ router.get('/user/:userId/projects',verifyAdmin, async (req, res) => {
     const projects = await Project.find({ createdBy: userId });
     res.json({ projects });
   } catch (error) {
-    console.error('Error fetching projects for user:', error);
-    res.status(500).json({ error: 'Failed to fetch projects for user' });
+    console.error('Error fetching projects for User:', error);
+    res.status(500).json({ error: 'Failed to fetch projects for User' });
   }
 });
 
@@ -58,10 +58,10 @@ router.delete('/projects/:projectId',verifyAdmin, async (req, res) => {
   try {
     const { projectId } = req.params;
     await Project.findByIdAndDelete(projectId);
-    res.status(200).json({ message: 'Project deleted successfully' });
+    res.status(200).json({ message: 'Project Deleted Successfully' });
   } catch (error) {
     console.error('Error deleting project:', error);
-    res.status(500).json({ error: 'Failed to delete project' });
+    res.status(500).json({ error: 'Failed to Delete Project' });
   }
 });
 

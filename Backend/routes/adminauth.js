@@ -16,7 +16,7 @@ router.post('/adminsignup', async (req,res) => {
       const hashpassword = await bcrypt.hash(password,5)
       const user = new Admin({email,password:hashpassword});
       await user.save();
-      res.status(201).json({ message: "Admin Added Successfully"});
+      res.status(201).json({ message: "Admin Registered Successfully"});
   }catch(error){
       console.log("Error",error)
       res.status(500).json({ message:' Registration Failed'})
@@ -30,13 +30,13 @@ router.post('/adminlogin', async(req,res) =>{
         if (!user) {
             return res
               .status(401)
-              .json({ error: "Authentication failed- Admin doesn't exists" });
+              .json({ error: "Authentication failed- Admin Does Not Exist" });
           }
           const passwordMatch = await bcrypt.compare(password, user.password);
         if (!passwordMatch) {
           return res
             .status(401)
-            .json({ error: "Authentication failed - Password doesn't match" });
+            .json({ error: "Authentication Failed - Password Does Not Match" });
         }
         const admintoken = jwt.sign(
         { userId: user._id, email: user.email},
@@ -54,13 +54,13 @@ return res;
 
 } catch (error) {
 console.log(error);
-res.status(500).json({ error: "Login failed" });
+res.status(500).json({ error: "Login Failed" });
 }
 });
 
 router.get("/logout", (req, res) => {
     res.clearCookie("Admintoken");
-    res.status(200).send("Logout successful");
+    res.status(200).send("Logout Successful");
     return res;
   });
   
