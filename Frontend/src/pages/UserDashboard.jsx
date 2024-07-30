@@ -148,16 +148,6 @@ const UserDashboard = () => {
                   className="w-full border-2 p-2 rounded-lg"
                 />
               </div>
-              <div className="mb-4">
-                <label className="block text-gray-700">Pledged Amount</label>
-                <input 
-                  type="number" 
-                  name="pledgedAmount" 
-                  value={formValues.pledgedAmount} 
-                  onChange={handleInputChange} 
-                  className="w-full border-2 p-2 rounded-lg"
-                />
-              </div>
               <div className="flex justify-between">
                 <button 
                   type="submit" 

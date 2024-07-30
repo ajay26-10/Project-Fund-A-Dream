@@ -20,7 +20,26 @@ router.get('/projects', async (req, res) => {
     const projectDetails = await Project.find({});
     res.json(projectDetails);
   } catch (error) {
-    res.status(500).send('Error Fetching Projects');
+    res.status(500).send('Error fetching projects');
+  }
+});
+
+router.get('/api/projects', async (req, res) => {
+  try {
+      const { search } = req.query;
+      let projects;
+
+      if (search) {
+          const regex = new RegExp(search, 'i'); // 'i' makes it case insensitive
+          projects = await Project.find({ title: regex });
+      } else {
+          projects = await Project.find({});
+      }
+
+      res.json(projects);
+  } catch (error) {
+      console.error('Error fetching projects:', error);
+      res.status(500).json({ error: 'Internal Server Error' });
   }
 });
 
@@ -41,10 +60,10 @@ router.post('/new-project', verifyToken, async (req, res) => {
     });
 
     await newProject.save();
-    res.status(201).json({ message: "Project Created Successfully", project: newProject });
+    res.status(201).json({ message: "Project created successfully", project: newProject });
   } catch (error) {
     console.error('Error creating project:', error);
-    res.status(500).json({ error: "Failed to Create Project" });
+    res.status(500).json({ error: "Failed to create project" });
   }
 });
 
